@@ -1,4 +1,4 @@
 # TCMFinal1
 TCM Final
-its ross
-hi
+
+Connor Mashman and Ross Basner TCM Make project
