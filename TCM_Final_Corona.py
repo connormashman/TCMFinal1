@@ -7,7 +7,7 @@ from newsapi import NewsApiClient
 print(
     'Welcome to the Covid-19 data center. You can use this platform to access live and valuable information about COVID-19 developements across the world.')
 
-
+# asks the user for the country that they are interested in
 def CountryInput():
     print('What country are you interested in?')
     country = input()
@@ -16,11 +16,15 @@ def CountryInput():
 
 country = CountryInput()
 
+# Corona Virus API URL
 url = 'https://api.covid19api.com/live/country/' + country
 
+
+# Breaks the JSON code into more readable information
 req = requests.get(url)
 parsed = json.loads(req.text)
 
+# added all relevant cases and their statuses
 cases = parsed
 date = datetime.today().strftime('%Y-%m-%d')
 date = date + 'T00:00:00Z'
@@ -46,8 +50,10 @@ print('* Recovered Cases:', recovered)
 print('* Deaths:', deaths)
 print('Would you like to read articles about Covid-19 in', country, '(y/n)')
 
+# Begining of the news segment of the code
 NewsOption = input()
 
+# URL and API key for the News API
 newsapi = NewsApiClient(api_key='354411437b25453e90a5f324d649f9fe')
 
 # print(country)
@@ -58,7 +64,7 @@ all_articles = newsapi.get_everything(q=key_phrase, domains='wsj.com, nytimes.co
 
 # for article in all_articles:
 
-# print(all_articles)
+# Returns and prints the articles
 if NewsOption == "y":
 
     if len(all_articles) > 0:
